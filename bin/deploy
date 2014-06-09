@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# upload this lib to pypi:
+python setup.py sdist upload
