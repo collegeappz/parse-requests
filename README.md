@@ -1,4 +1,4 @@
-# parse_rest
+# parse_rest [![Build Status](https://travis-ci.org/collegeappz/parse_requests.svg?branch=master)](https://travis-ci.org/collegeappz/parse_requests)
 
 parse_rest is fast and simple Python library to interact with Parse.com REST API.
 It's based on the amazing requests library. 
