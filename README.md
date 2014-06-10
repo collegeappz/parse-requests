@@ -1,6 +1,6 @@
-# parse_rest [![Build Status](https://travis-ci.org/collegeappz/parse_requests.svg?branch=master)](https://travis-ci.org/collegeappz/parse_requests)
+# parse-requests [![Build Status](https://travis-ci.org/collegeappz/parse_requests.svg?branch=master)](https://travis-ci.org/collegeappz/parse_requests)
 
-parse_rest is fast and simple Python library to interact with Parse.com REST API.
+parse-requests is fast and simple Python library to interact with Parse.com REST API.
 It's based on the amazing requests library. 
 
 Parse.com is a Facebook company that provides backend infrastructure to help developers get started quickly. 

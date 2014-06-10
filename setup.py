@@ -5,6 +5,7 @@ It's a simple wrapper over the Parse.com REST API. It returns data in JSON forma
 
 Example Usage
 -------------
+See repo
 
 Contribute
 ----------
@@ -13,8 +14,9 @@ https://github.com/collegeappz/parse_requests
 """
 doc = __doc__.splitlines()
 
-from setuptools import setup
-repo_url = "https://github.com/collegeappz/parse_requests"
+from setuptools import setup, find_packages
+
+repo_url = "https://github.com/collegeappz/parse-requests"
 
 classifiers = """\
 Development Status :: 5 - Production/Stable
@@ -27,23 +29,23 @@ Topic :: Software Development :: Quality Assurance
 """.splitlines()
 
 setup(
-    name="parse_requests",
+    name="parse-requests",
     version="1.0.0",
     zip_safe=False,
     author='Kien Pham',
     author_email='kien@collegeappz.com',
-    url="https://github.com/collegeappz/parse_requests",
+    packages=find_packages(exclude=['test']),
+    url="https://github.com/collegeappz/parse-requests",
     license="MIT",
+    platforms='any',
     description=doc[0],
     long_description='\n'.join(doc[2:]),
     install_requires=['requests'],
-    extras_require={
-        'test': [
-            'nose',
-            'coverage',
-            'mock'
-        ]
-    },
+    tests_require=[
+        'nose',
+        'coverage',
+        'mock'
+    ],
     test_suite="test",
     keywords="parse.com parse api rest",
     classifiers=classifiers
