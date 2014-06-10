@@ -2,4 +2,4 @@
 
 find ./ -type f -name '*.pyc' -exec rm -f {} \;
 rm -rf cover .coverage cov_report
-rm -rf *.egg-info
+rm -rf *.egg-info dist/*
