@@ -1,4 +1,4 @@
-from parse_requests.classes import BaseParseClass
+from parse_requests import BaseParseClass
 
 
 class Product(BaseParseClass):

@@ -35,19 +35,16 @@ setup(
     author='Kien Pham',
     author_email='kien@collegeappz.com',
     packages=['parse_requests'],
-    # packages=find_packages(exclude=['test']),
     url="https://github.com/collegeappz/parse-requests",
     license="MIT",
     platforms='any',
     description=doc[0],
     long_description='\n'.join(doc[2:]),
     install_requires=['requests'],
-    tests_require=[
-        'nose',
-        'coverage',
-        'mock'
-    ],
     test_suite="test",
     keywords="parse.com parse api rest",
-    classifiers=classifiers
+    classifiers=classifiers,
+    extras_require={
+        'test': ['nose', 'coverage', 'mock']
+    }
 )

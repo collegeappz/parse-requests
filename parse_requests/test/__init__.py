@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal
-from parse_requests.classes import set_keys
+from parse_requests import set_keys
 from parse_requests.classes.User import User
 
 
