@@ -14,12 +14,12 @@ def set_keys(app_id, api_key):
 
 
 class BaseParseClass(object):
-
     _connection_error_message = ('Cannot connect to parse.com.')
     _parse_class_name = None
     _parse_special_classes = ['users', 'login', 'roles', 'files', 'events',
                               'push', 'installations', 'functions', 'jobs',
-                              'requestPasswordReset', 'events']
+                              'requestPasswordReset', 'events', 'products',
+                              'roles']
 
     def __init__(self, app_id=None, api_key=None):
         self._url = 'https://api.parse.com/1/'
