@@ -1,6 +1,5 @@
 import json
 import requests
-#from requests.packages.urllib3.exceptions import ConnectionError
 
 AUTH_KEYS = {}
 
@@ -86,7 +85,7 @@ class BaseParseClass(object):
             payload = requests.post(self._base_url, data=json.dumps(data),
                                     headers=self._headers)
             return payload.json()
-        except ConnectionError, e:
+        except Exception, e:
             return {'error': self._connection_error_message}
 
     def put(self, data):
@@ -103,3 +102,7 @@ class BaseParseClass(object):
         res = requests.delete(url=url, headers=self._headers)
 
         return res.json()
+
+
+class User(BaseParseClass):
+    _parse_class_name = 'users'
