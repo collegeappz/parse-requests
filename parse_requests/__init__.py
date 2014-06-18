@@ -1,6 +1,6 @@
 import json
 import requests
-from requests.packages.urllib3.exceptions import ConnectionError
+#from requests.packages.urllib3.exceptions import ConnectionError
 
 AUTH_KEYS = {}
 
@@ -65,7 +65,7 @@ class BaseParseClass(object):
 
             return payload.json()
 
-        except ConnectionError:
+        except Exception, e:
             return {'error': self._connection_error_message}
 
     def save(self):
