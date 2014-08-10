@@ -64,8 +64,8 @@ class BaseParseClass(object):
 
             return payload.json()
 
-        except Exception, e:
-            return {'error': self._connection_error_message}
+        except Exception as e:
+            return {'error': e.message}
 
     def save(self):
         data = self.json()
@@ -78,30 +78,42 @@ class BaseParseClass(object):
         if data.get('objectId', False):
             return self.put(data=data)
 
-        return self.post(data=data)
+        try:
+            return self.post(data=data)
+        except Exception as e:
+            return {'error': e.message}
 
     def post(self, data):
         try:
             payload = requests.post(self._base_url, data=json.dumps(data),
                                     headers=self._headers)
             return payload.json()
-        except Exception, e:
-            return {'error': self._connection_error_message}
+        except Exception as e:
+            return {'error': e.message}
 
     def put(self, data):
         url = (self._base_url + "/" + data.get('objectId')
                if data.get('objectId') else self._base_url)
 
-        payload = requests.put(url=url, data=json.dumps(data),
-                               headers=self._headers)
-        return payload.json()
+        try:
+            payload = requests.put(url=url,
+                                   data=json.dumps(data),
+                                   headers=self._headers)
+
+            return payload.json()
+        except Exception as e:
+            return {'error': e.message}
 
     def delete(self, data):
         url = (self._base_url + "/" + data.get('objectId')
                if data.get('objectId') else self._base_url)
-        res = requests.delete(url=url, headers=self._headers)
 
-        return res.json()
+        try:
+            res = requests.delete(url=url, headers=self._headers)
+
+            return res.json()
+        except Exception as e:
+            return {'error': e.message}
 
 
 class User(BaseParseClass):
