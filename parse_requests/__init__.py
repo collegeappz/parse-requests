@@ -104,9 +104,8 @@ class BaseParseClass(object):
         except Exception as e:
             return {'error': e.message}
 
-    def delete(self, data):
-        url = (self._base_url + "/" + data.get('objectId')
-               if data.get('objectId') else self._base_url)
+    def delete(self, objectId):
+        url = self._base_url + "/" + objectId
 
         try:
             res = requests.delete(url=url, headers=self._headers)
