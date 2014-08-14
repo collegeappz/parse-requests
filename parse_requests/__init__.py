@@ -27,7 +27,7 @@ class BaseParseClass(object):
             self._parse_class_name = self.__class__.__name__.lower()
 
         collection = (self._parse_class_name if self._parse_class_name in
-                      self._parse_special_classes else
+                                                self._parse_special_classes else
                       'classes/' + self._parse_class_name)
 
         self._base_url = self._url + collection
@@ -49,15 +49,25 @@ class BaseParseClass(object):
     def get(self, **kwargs):
         objectId = kwargs.pop('objectId', None)
         createdBy = kwargs.pop('createdBy', None)
+        parentCategory = kwargs.pop('parentCategory', None)
         params = kwargs
 
         url = ("{base}/{id}".format(base=self._base_url, id=objectId) if
                objectId else self._base_url)
 
+        where = {}
         if createdBy:
-            params['where'] = json.dumps(
-                {"createdBy": {"__type": "Pointer", "className": "_User",
-                               "objectId": createdBy}})
+            where["createdBy"] = {"__type": "Pointer", "className": "_User",
+                                  "objectId": createdBy}
+
+        if parentCategory:
+            where["parentCategory"] = {
+                "__type": "Pointer",
+                "className": "TaskCategory",
+                "objectId": parentCategory}
+
+        if where:
+            params['where'] = json.dumps(where)
 
         try:
             payload = requests.get(url, headers=self._headers, params=params)
