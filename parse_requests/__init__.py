@@ -50,6 +50,7 @@ class BaseParseClass(object):
         objectId = kwargs.pop('objectId', None)
         createdBy = kwargs.pop('createdBy', None)
         parentCategory = kwargs.pop('parentCategory', None)
+        status = kwargs.pop('status', None)
         params = kwargs
 
         url = ("{base}/{id}".format(base=self._base_url, id=objectId) if
@@ -65,6 +66,9 @@ class BaseParseClass(object):
                 "__type": "Pointer",
                 "className": "TaskCategory",
                 "objectId": parentCategory}
+
+        if status:
+            where["status"] = status
 
         if where:
             params['where'] = json.dumps(where)
