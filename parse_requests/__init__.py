@@ -51,6 +51,7 @@ class BaseParseClass(object):
         createdBy = kwargs.pop('createdBy', None)
         parentCategory = kwargs.pop('parentCategory', None)
         status = kwargs.pop('status', None)
+        emailVerified = kwargs.pop('emailVerified', None)
         params = kwargs
 
         url = ("{base}/{id}".format(base=self._base_url, id=objectId) if
@@ -69,6 +70,9 @@ class BaseParseClass(object):
 
         if status:
             where["status"] = status
+
+        if emailVerified:
+            where["emailVerified"] = True
 
         if where:
             params['where'] = json.dumps(where)
