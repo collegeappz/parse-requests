@@ -30,7 +30,7 @@ Topic :: Software Development :: Quality Assurance
 
 setup(
     name="parse-requests",
-    version="1.0.6",
+    version="1.0.7",
     zip_safe=False,
     author='Kien Pham',
     author_email='kien@collegeappz.com',

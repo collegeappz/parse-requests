@@ -26,8 +26,9 @@ class BaseParseClass(object):
         if self._parse_class_name is None:
             self._parse_class_name = self.__class__.__name__.lower()
 
-        collection = (self._parse_class_name if self._parse_class_name in
-                                                self._parse_special_classes else
+        collection = (self._parse_class_name if
+                      self._parse_class_name in
+                      self._parse_special_classes else
                       'classes/' + self._parse_class_name)
 
         self._base_url = self._url + collection
@@ -51,6 +52,8 @@ class BaseParseClass(object):
         createdBy = kwargs.pop('createdBy', None)
         parentCategory = kwargs.pop('parentCategory', None)
         status = kwargs.pop('status', None)
+        school = kwargs.pop('school', None)
+        type = kwargs.pop('type', None)
         emailVerified = kwargs.pop('emailVerified', None)
         params = kwargs
 
@@ -62,6 +65,10 @@ class BaseParseClass(object):
             where["createdBy"] = {"__type": "Pointer", "className": "_User",
                                   "objectId": createdBy}
 
+        if school:
+            where["school"] = {"__type": "Pointer", "className": "School",
+                               "objectId": school}
+
         if parentCategory:
             where["parentCategory"] = {
                 "__type": "Pointer",
@@ -70,6 +77,9 @@ class BaseParseClass(object):
 
         if status:
             where["status"] = status
+
+        if type:
+            where["type"] = type
 
         if emailVerified:
             where["emailVerified"] = True
