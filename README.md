@@ -1,4 +1,4 @@
-# parse-requests [![Build Status](https://travis-ci.org/collegeappz/parse_requests.svg?branch=master)](https://travis-ci.org/collegeappz/parse_requests)
+# parse-requests [![Build Status](https://travis-ci.org/collegeappz/parse-requests.svg?branch=master)](https://travis-ci.org/collegeappz/parse-requests)
 
 parse-requests is fast and simple Python library to interact with Parse.com REST API.
 It's based on the amazing requests library. 
